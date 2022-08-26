@@ -1,0 +1,16 @@
+.cartButton {
+   background-color:rgb(255,23,111);
+      border-radius:50%;
+      height:25px;
+      width:25px;
+      padding:1px
+}
+.count {
+  color:#fff
+}
+
+@media(prefers-color-scheme: light ){
+  .count {
+    color:#fff
+  }
+}

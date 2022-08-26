@@ -1,0 +1,30 @@
+.cart {
+  margin-top: 2rem;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+  scrollbar-width: 0px;
+}
+.head {
+  display: flex;
+  color:#121212;
+  margin-left: 3%;
+
+}
+
+ ::-webkit-scrollbar{
+  display: none;
+}
+.total {
+  position: absolute;
+  bottom: 0px;
+  background: rgb(234,0,0);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: light) {
+  .total {
+    color: #fff
+  }
+}
