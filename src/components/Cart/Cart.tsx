@@ -1,5 +1,6 @@
 import { cartProductInterface } from '../../interfaces/cart.interface'
 import CartButton from '../../svg/CartButton'
+import { priceFormatter } from '../../utils/formatter'
 import CartItem from '../CartItem/CartItem'
 interface cartProps {
   cart:[cartProductInterface],
@@ -25,7 +26,7 @@ const Cart = (props:cartProps) => {
         
         }
         <div className={classes.total}>
-         🎉 Your Payable subtotal is ₹  {total.toFixed(2)} ✨
+         🎉 Your Payable subtotal is ₹  {priceFormatter(total+'')} ✨
         </div>
         
         </div>

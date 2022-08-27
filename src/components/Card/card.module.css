@@ -63,6 +63,14 @@
   margin: 0px;
 }
 
+.store {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #121212;
+  width: 100%;
+}
+
 @media (prefers-color-scheme: light) {
  .card {
   background-color: whitesmoke;

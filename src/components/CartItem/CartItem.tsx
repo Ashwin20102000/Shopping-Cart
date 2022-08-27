@@ -1,5 +1,6 @@
 import { cartProductInterface, stateInterface } from "../../interfaces/cart.interface"
 import TrashButton from "../../svg/TrashButton"
+import { priceFormatter } from "../../utils/formatter"
 import classes from './cartItem.module.css'
 interface cartItemsProps {
   cartItem:cartProductInterface,
@@ -30,7 +31,7 @@ const CartItem = (props:cartItemsProps) => {
       <img className={classes.img} src={image} height={70} width={70} />
       <div className={classes.info}>
       <div>  {title}</div>
-      <small>{description.split(" ").slice(0,7).join(" ")}..</small>
+      <small>{description.split(" ").slice(0,5).join(" ")}..</small>
       <div className={classes.estimation}>
       <div className={classes.price}> ₹ {price} </div>
       <span>X</span>
@@ -48,7 +49,7 @@ const CartItem = (props:cartItemsProps) => {
         className={classes.btn}>
           +
         </button>
-      <div style={{marginLeft:'15px'}} className={classes.price}> ₹ {+price*+quantity} </div>
+      <div style={{marginLeft:'15px'}} className={classes.price}> ₹ {priceFormatter((+price*+quantity)+'')} </div>
       <div style={{cursor:'pointer'}} onClick={removeItem}>
       <TrashButton />
       </div>
