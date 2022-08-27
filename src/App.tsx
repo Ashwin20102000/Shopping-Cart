@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import Loader from './components/Loader/Loader';
 import Product from './components/Product/Product';
 import { stateInterface } from './interfaces/cart.interface';
 import { BASE_API } from './utils/api'
@@ -7,22 +8,33 @@ import { intialState } from './utils/intialState';
 
 function App() {
   const [state,setState] = React.useState<stateInterface>(intialState);
+  const [loader,setLoader] = React.useState<boolean>(false);
   const getProducts = async() => {
-    const product = await fetch(BASE_API+'/products');
-    const data = await product.json();
-    data && setState({
-     cart: [...state.cart],
-      product:data
-    });
+    try {
+      setLoader(true);
+        const product = await fetch(BASE_API+'/products');
+        const data = await product.json();
+        data && setState({
+        cart: [...state.cart],
+          product:data
+        });
+            setLoader(false);
+
+    } catch (error) {
+      console.log('error', error);
+    }
+    setLoader(false);
   }
   React.useEffect(()=>{
     getProducts();
   },[])
-  console.log({state})
+  console.log({state,loader})
   return (
       <div className="App">
         <div  className="container">
-         <Product data = {state} setState={setState} />
+          {
+            loader ? <Loader />:<Product data = {state} setState={setState} fetchProducts={getProducts} />
+          }
         </div>
       </div>
   )

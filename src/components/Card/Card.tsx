@@ -1,4 +1,4 @@
-import { cartProductInterface,  propsCard, stateInterface } from '../../interfaces/cart.interface'
+import { cartProductInterface,  propsCard, stateInterface ,productInterface } from '../../interfaces/cart.interface'
 import { descShrinker, priceFormatter, titleShrinker } from '../../utils/formatter';
 import classes from './card.module.css';
 
@@ -28,7 +28,12 @@ const Card = (propsCard:propsCard) => {
   return (
     <div>
       <div className={classes.card}>
-        <span className={classes.category}>{prod.category}</span>
+        <span onClick={()=>propsCard.setState((prev:stateInterface)=>{
+          return {
+            ...prev,
+            product:prev.product.filter((product:productInterface)=>product.category===propsCard.prod.category)
+          }
+        })} className={classes.category}>{prod.category}</span>
         <div className="card-img">
           <img className={classes.img} src={prod.image} alt="" />
         </div>
@@ -39,7 +44,7 @@ const Card = (propsCard:propsCard) => {
           <div className={classes.store}>
             <small>{prod.rating.rate} ⭐</small>
             <div className={classes.price}> ₹ {prod.price}</div>
-            <small>stock {prod.rating.count}</small>
+            <small>In Stock : {prod.rating.count}</small>
           </div>
           </div>
         </div>

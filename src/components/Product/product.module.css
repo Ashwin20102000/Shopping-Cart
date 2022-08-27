@@ -32,3 +32,10 @@
   animation:1s;
   color:grey;
 }
+
+.filter {
+  text-transform:capitalize;
+  text-align:left;
+  cursor:pointer;
+  margin: 1em;
+}

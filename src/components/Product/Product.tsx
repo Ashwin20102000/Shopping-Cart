@@ -16,6 +16,9 @@ const Product = (props:propsInterface) => {
           <CartButton count={cart.length||undefined} />
          </div>
       </div>
+      {
+        product && product.length!==20 && product.length!==0 ? <h3 onClick={()=>props.fetchProducts()} className={classes.filter}>{product[0].category} X</h3> :           <small className={classes.filter}>ℹ️ click any of the category to filter </small>
+      }
       <div style={{display:'flex',flexWrap:'wrap',}}>
       {
         product && product.map((prod:productInterface)=>{

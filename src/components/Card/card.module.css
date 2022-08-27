@@ -43,6 +43,8 @@
   border: 1px solid grey;
   padding: 4px;
   border-radius: 12px;
+  cursor: pointer;
+
 }
 
 .info {

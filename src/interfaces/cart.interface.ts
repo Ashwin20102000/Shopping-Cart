@@ -26,7 +26,8 @@ export interface stateInterface {
 
 export interface propsInterface  {
   data : stateInterface | any,
-  setState:(state:stateInterface)=>void
+  setState:(state:stateInterface)=>void;
+  fetchProducts:()=>void
 }
 
 
