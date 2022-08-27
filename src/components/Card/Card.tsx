@@ -17,14 +17,13 @@ const descShrinker = (desc:string) => {
   const {prod} = propsCard;
   const AddToCart = () => {
     let isProductExist = propsCard.cart.filter((cart:cartProductInterface)=>cart.id===prod.id);
-    console.log('isProductExist', isProductExist)
     if(isProductExist.length){
       isProductExist[0].quantity+=1;
       const removeExisting = propsCard.cart.filter((cart:cartProductInterface)=>cart.id!==prod.id);
       propsCard.setState((prevState:stateInterface)=>{   
         return {
           product:prevState.product,
-          cart: [...removeExisting,isProductExist[0]]
+          cart: [isProductExist[0],...removeExisting]
         }
       })  
     }
@@ -32,7 +31,7 @@ const descShrinker = (desc:string) => {
       propsCard.setState((prevState:stateInterface)=>{   
         return {
           product:prevState.product,
-          cart: [...prevState.cart,{...prod,quantity:1,title:titleShrinker(prod.title),description:descShrinker(prod.description)}]
+          cart: [{...prod,quantity:1,title:titleShrinker(prod.title),description:descShrinker(prod.description),price:parseFloat(prod.price).toFixed(2)},...prevState.cart]
         }
       })
     }
